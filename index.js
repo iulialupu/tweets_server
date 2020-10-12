@@ -1,7 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const { graphqlHTTP } = require("express-graphql");
-const schema = require("./schema/schema");
+// const schema = require("./schema/schema");
+const schema = require("./typeDefs");
+const graphqlResolver = require("./resolvers")
 
 const app = express();
 
@@ -10,6 +12,7 @@ app.use(
   graphqlHTTP({
     graphiql: true,
     schema,
+    rootValue: graphqlResolver,
   })
 );
 
@@ -20,6 +23,7 @@ mongoose
       useNewUrlParser: true,
       keepAlive: true,
       useFindAndModify: false,
+       useUnifiedTopology: true 
     }
   )
   .then((result) => {
