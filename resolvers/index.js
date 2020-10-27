@@ -1,6 +1,7 @@
-const tweetResolvers = require("./tweets")
-
+const tweetResolvers = require("./tweets");
+const userResolvers = require("./users");
 
 module.exports = {
-    ...tweetResolvers,
-}
+  ...tweetResolvers,
+  ...userResolvers,
+};
